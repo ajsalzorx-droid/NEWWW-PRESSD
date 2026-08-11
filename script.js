@@ -81,3 +81,30 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(updateScrollMotion)},{passive:true});
   updateScrollMotion();
 }
+
+// Consistent smooth navigation, active-section feedback, and quick return to top.
+const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  if(link.closest('.hero-rail'))return;
+  link.addEventListener('click',event=>{
+    const target=document.querySelector(link.getAttribute('href'));
+    if(!target)return;
+    event.preventDefault();
+    window.scrollTo({top:target.offsetTop-88,behavior:reducedMotion?'auto':'smooth'});
+    history.replaceState(null,'',link.getAttribute('href'));
+  });
+});
+const backToTop=document.querySelector('.back-to-top');
+backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:reducedMotion?'auto':'smooth'}));
+addEventListener('scroll',()=>backToTop.classList.toggle('visible',scrollY>700),{passive:true});
+const primaryLinks=[...document.querySelectorAll('.desktop-nav a[href^="#"]')];
+const primarySections=primaryLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
+const activeNavObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(!entry.isIntersecting)return;
+  primaryLinks.forEach(link=>{
+    const active=link.getAttribute('href')===`#${entry.target.id}`;
+    link.classList.toggle('active',active);
+    if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
+  });
+}),{rootMargin:'-35% 0px -55%',threshold:0});
+primarySections.forEach(section=>activeNavObserver.observe(section));
