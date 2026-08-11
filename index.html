@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="style.css?v=22">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"PRESS'D Wellness Café","address":{"@type":"PostalAddress","addressLocality":"Jumeirah Village Triangle","addressRegion":"Dubai","addressCountry":"AE"},"servesCuisine":["Healthy","Breakfast","Coffee"],"openingHours":["Mo-Th 07:00-23:00","Fr-Su 07:00-00:00"],"priceRange":"AED 18-65"}</script>
 </head>
 <body>
@@ -20,6 +20,7 @@
   <header class="navbar" aria-label="Main navigation">
     <a class="logo" href="#home" aria-label="PRESS'D home"><img src="assets/pressd-logo.png" alt="PRESS'D Wellness Café"></a>
     <nav class="desktop-nav"><a href="#menu">Menu</a><a href="#about">Our Café</a><a href="#pets">Pet Friendly</a><a href="#work">Work & Chill</a><a href="#visit">Visit</a></nav>
+    <button class="cart-toggle" aria-label="Open shopping cart">Cart <span>0</span></button>
     <button class="book-btn" data-book>Book a table <span>↗</span></button>
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><i></i><i></i></button>
   </header>
@@ -38,20 +39,8 @@
         <a class="rail-card" href="#about"><img src="assets/smoothies.webp" alt="Discover the PRESS'D café"><span>Our café <b>→</b></span></a>
         <a class="rail-card feature-card" href="#pets"><img src="assets/pet-friendly-cafe.png" alt="A guest enjoying PRESS'D with her dog"><span><i><strong>Pet friendly</strong><small>Dogs welcome · water bowls · outdoor seating</small></i><b>→</b></span></a>
         <a class="rail-card feature-card" href="#work"><img src="assets/work-ambience-cafe.png" alt="A guest working comfortably inside PRESS'D"><span><i><strong>Good work ambience</strong><small>Fast Wi-Fi · table power · calm corners</small></i><b>→</b></span></a>
-        <a class="rail-card feature-card" href="#visit"><img src="assets/pressd-logo.png" alt="Visit PRESS'D Wellness Café in Dubai"><span><i><strong>Visit us</strong><small>JVT · Dubai · open daily</small></i><b>→</b></span></a>
+        <a class="rail-card feature-card" href="#visit" aria-label="Visit PRESS'D Wellness Café in Dubai"><video autoplay muted loop playsinline preload="metadata" poster="assets/pressd-logo.png" aria-hidden="true"><source src="assets/visit-location-cover.mp4" type="video/mp4"></video><span><i><strong>Visit us</strong><small>JVT · Dubai · open daily</small></i><b>→</b></span></a>
       </aside>
-    </section>
-
-    <section class="explore section" aria-labelledby="explore-title">
-      <div class="explore-head reveal"><div><p class="eyebrow dark">ONE PLACE · EVERY KIND OF DAY</p><h2 id="explore-title">EXPLORE PRESS’D.</h2></div><p>Everything you need,<br>one scroll away.</p></div>
-      <div class="explore-grid">
-        <a class="explore-card reveal" href="#menu"><img src="assets/avocado-toast.webp" alt="Healthy avocado breakfast"><span class="explore-no">01</span><div><h3>Menu</h3><p>Healthy food</p></div><b>→</b></a>
-        <a class="explore-card reveal" href="#pets"><img src="assets/pet-friendly-cafe.png" alt="Pet-friendly PRESS'D café"><span class="explore-no">02</span><div><h3>Pet friendly</h3><p>Paws welcome</p></div><b>→</b></a>
-        <a class="explore-card reveal" href="#work"><img src="assets/work-ambience-cafe.png" alt="Work-friendly café ambience"><span class="explore-no">03</span><div><h3>Work</h3><p>Stay focused</p></div><b>→</b></a>
-        <a class="explore-card reveal" href="#wellness"><img src="assets/power-bowl.webp" alt="Colourful wellness food"><span class="explore-no">04</span><div><h3>Wellness</h3><p>Feel good</p></div><b>→</b></a>
-        <a class="explore-card reveal" href="#about"><img src="assets/smoothies.webp" alt="Fresh PRESS'D smoothies"><span class="explore-no">05</span><div><h3>Our story</h3><p>The PRESS'D way</p></div><b>→</b></a>
-        <a class="explore-card reveal" href="#visit"><img src="assets/coffee-matcha.webp" alt="Coffee at PRESS'D Dubai"><span class="explore-no">06</span><div><h3>Visit</h3><p>Dubai, UAE</p></div><b>→</b></a>
-      </div>
     </section>
 
     <section class="intro section" id="about"><p class="eyebrow dark">THE PRESS’D WAY</p><div class="intro-grid"><h2>MORE THAN<br><em>A CAFÉ.</em></h2><div><p class="lead">Your everyday space to eat clean, get things done, slow down and spend time with your four-legged best friend.</p><div class="facts"><span>Pet friendly</span><span>Work friendly</span><span>Wellness food</span><span>Good coffee</span><span>Good energy</span></div></div></div></section>
@@ -81,15 +70,18 @@
 
     <section class="instagram section"><div class="instagram-head reveal"><div><p class="eyebrow dark">FOLLOW THE GOOD STUFF</p><h2>@PRESSD.CAFE</h2></div><p>Coffee. Wellness. Work. Dogs.<br>Basically everything we love.</p></div><div class="instagram-track"><img src="assets/coffee-matcha.webp" alt="PRESS'D coffee"><img src="assets/pet-friendly-cafe.png" alt="Pet-friendly café life"><img src="assets/power-bowl.webp" alt="PRESS'D power bowl"><img src="assets/work-ambience-cafe.png" alt="Working from PRESS'D"><img src="assets/smoothies.webp" alt="Fresh smoothies"><img src="assets/avocado-toast.webp" alt="Avocado breakfast"></div><a class="instagram-follow" href="#gallery">Follow on Instagram →</a></section>
 
-    <section class="visit section" id="visit"><div><p class="eyebrow dark">COME SAY HELLO</p><h2>COME GET<br><em>PRESS’D.</em></h2></div><div class="visit-info"><div><small>OPENING HOURS</small><p>Daily <b>7:00 AM – 10:00 PM</b></p></div><div><small>FIND US</small><p>PRESS'D Wellness Café<br>Dubai, United Arab Emirates</p></div><div class="visit-actions"><button data-book>Book a table ↗</button><a href="https://maps.google.com/?q=Jumeirah+Village+Triangle+Dubai" target="_blank" rel="noopener">Get directions ↗</a></div></div><div class="map-art" aria-label="Stylized map of JVT"><span>PRESS’D</span><i></i><b>JVT</b></div></section>
+    <section class="visit section" id="visit"><div><p class="eyebrow dark">COME SAY HELLO</p><h2>COME GET<br><em>PRESS’D.</em></h2></div><div class="visit-info"><div><small>OPENING HOURS</small><p>Daily <b>7:00 AM – 10:00 PM</b></p></div><div><small>FIND US</small><p>PRESS'D Wellness Café<br>Dubai, United Arab Emirates</p></div><div class="visit-actions"><button data-book>Book a table ↗</button><a href="https://maps.app.goo.gl/PnBP3FGwKFWAP8VF8" target="_blank" rel="noopener noreferrer">Get directions ↗</a></div></div><a class="map-art visit-video-cover" href="https://maps.app.goo.gl/PnBP3FGwKFWAP8VF8" target="_blank" rel="noopener noreferrer" aria-label="Open PRESS'D location in Google Maps"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/visit-location-cover.mp4" type="video/mp4"></video><span>PRESS’D · OPEN IN MAPS ↗</span><b>JVT</b></a></section>
   </main>
 
   <footer><div class="footer-top"><img class="footer-logo" src="assets/pressd-logo.png" alt="PRESS'D Wellness Café"><div class="footer-links"><a href="#menu">Menu</a><a href="#about">About</a><a href="#visit">Visit</a><a href="mailto:hello@pressd.cafe">Contact</a></div></div><div class="footer-statement">COFFEE. FOOD. PEOPLE.</div><div class="footer-bottom"><span>© 2026 PRESS’D WELLNESS CAFÉ</span><span>INSTAGRAM · TIKTOK · FACEBOOK</span><span>JVT, DUBAI</span></div></footer>
 
   <button class="back-to-top" aria-label="Back to top">↑</button>
+  <nav class="mobile-dock" aria-label="Mobile quick navigation"><a href="#home"><span>⌂</span>Home</a><a href="#menu"><span>≡</span>Menu</a><button class="dock-cart"><span>▢<i>0</i></span>Cart</button><a href="https://wa.me/971543962660?text=Hello%20PRESS%27D!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener noreferrer"><img src="assets/whatsapp-transparent.png" alt="">WhatsApp</a></nav>
+  <div class="cart-backdrop" aria-hidden="true"></div>
+  <aside class="cart-drawer" aria-hidden="true" aria-labelledby="cart-title"><header><div><p>YOUR ORDER</p><h2 id="cart-title">CART <span class="cart-heading-count">0</span></h2></div><button class="cart-close" aria-label="Close cart">×</button></header><div class="cart-items"></div><div class="cart-empty">Your cart is empty.<br><a href="#menu">Explore the menu →</a></div><footer><div class="cart-total"><span>Total</span><strong>AED 0</strong></div><a class="whatsapp-order disabled" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true"><img src="assets/whatsapp-transparent.png" alt="">Order on WhatsApp</a><small>Order will be sent to +971 54 396 2660</small></footer></aside>
 
   <dialog class="booking"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow dark">SAVE YOUR SPOT</p><h2>BOOK A TABLE.</h2><form><label>Name<input required placeholder="Your name"></label><label>Phone<input required type="tel" placeholder="+971"></label><div><label>Date<input required type="date"></label><label>Guests<select><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5+ guests</option></select></label></div><button type="submit">Request table ↗</button><p class="form-note" aria-live="polite"></p></form></dialog>
   <dialog class="lightbox"><button class="dialog-close" aria-label="Close">×</button><img alt="Expanded café gallery image"></dialog>
-  <script src="script.js?v=15"></script>
+  <script src="script.js?v=22"></script>
 </body>
 </html>
