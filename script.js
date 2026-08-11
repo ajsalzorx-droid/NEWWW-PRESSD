@@ -47,3 +47,17 @@ document.querySelectorAll('.hero-rail a[href^="#"]').forEach(link=>link.addEvent
   requestAnimationFrame(()=>{root.style.scrollBehavior=previousBehavior});
   history.replaceState(null,'',link.getAttribute('href'));
 }));
+
+// Re-apply deep links after the branded loader and image layout have settled.
+window.addEventListener('load',()=>{
+  if(!location.hash)return;
+  const target=document.querySelector(location.hash);
+  if(!target)return;
+  setTimeout(()=>{
+    const root=document.documentElement;
+    const previousBehavior=root.style.scrollBehavior;
+    root.style.scrollBehavior='auto';
+    window.scrollTo(0,target.offsetTop-88);
+    requestAnimationFrame(()=>{root.style.scrollBehavior=previousBehavior});
+  },1250);
+});
