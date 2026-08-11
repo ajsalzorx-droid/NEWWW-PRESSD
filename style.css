@@ -131,6 +131,8 @@ html{scroll-padding-top:92px}body{overscroll-behavior-y:none}a,button{-webkit-ta
 .back-to-top{position:fixed;z-index:80;right:24px;bottom:24px;width:48px;height:48px;border:1px solid var(--orange);border-radius:50%;background:rgba(2,3,3,.9);color:var(--orange);font-size:19px;cursor:pointer;opacity:0;translate:0 14px;pointer-events:none;transition:opacity .35s var(--ease),translate .35s var(--ease),background .3s,color .3s;backdrop-filter:blur(12px)}.back-to-top.visible{opacity:1;translate:0 0;pointer-events:auto}.back-to-top:hover{background:var(--orange);color:var(--ink)}
 .category-wrap{position:static}
 .hero-media{display:block;background:var(--ink)}
+.visit .map-art{height:clamp(380px,48vw,680px);background:linear-gradient(0deg,rgba(2,3,3,.52),rgba(2,3,3,.04) 65%),url('assets/visit-pressd-interior.png') center/cover no-repeat;border-color:rgba(251,176,25,.38)}
+.visit .map-art:before,.visit .map-art:after,.visit .map-art i{display:none}.visit .map-art span{position:absolute;left:28px;bottom:28px;background:var(--orange);color:var(--ink)}.visit .map-art b{right:28px;bottom:20px;color:var(--cream);font-size:clamp(45px,8vw,120px);opacity:.9}
 @media(max-width:760px){.back-to-top{right:16px;bottom:16px;width:44px;height:44px}.mobile-menu nav a{min-height:54px;display:flex;align-items:center}}
 
 /* Laptop-first hero: all five discovery cards visible in one viewport. */
