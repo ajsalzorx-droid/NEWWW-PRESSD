@@ -40,6 +40,10 @@ document.querySelectorAll('.hero-rail a[href^="#"]').forEach(link=>link.addEvent
   const target=document.querySelector(link.getAttribute('href'));
   if(!target)return;
   event.preventDefault();
-  target.scrollIntoView({behavior:'auto',block:'start'});
+  const root=document.documentElement;
+  const previousBehavior=root.style.scrollBehavior;
+  root.style.scrollBehavior='auto';
+  window.scrollTo(0,target.getBoundingClientRect().top+window.scrollY-88);
+  requestAnimationFrame(()=>{root.style.scrollBehavior=previousBehavior});
   history.replaceState(null,'',link.getAttribute('href'));
 }));
