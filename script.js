@@ -61,3 +61,23 @@ window.addEventListener('load',()=>{
     requestAnimationFrame(()=>{root.style.scrollBehavior=previousBehavior});
   },1250);
 });
+
+// Lightweight scroll progress and image parallax, batched to one frame.
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const parallaxImages=[...document.querySelectorAll('.pet-min-image img,.signature>img,.gallery-grid img')];
+  parallaxImages.forEach(image=>image.classList.add('scroll-parallax'));
+  let scrollFrame=0;
+  const updateScrollMotion=()=>{
+    scrollFrame=0;
+    const max=document.documentElement.scrollHeight-innerHeight;
+    document.documentElement.style.setProperty('--page-progress',max?Math.min(1,scrollY/max):0);
+    parallaxImages.forEach(image=>{
+      const rect=image.parentElement.getBoundingClientRect();
+      if(rect.bottom<0||rect.top>innerHeight)return;
+      const offset=((rect.top+rect.height/2)-innerHeight/2)/innerHeight;
+      image.style.setProperty('--parallax-y',`${offset*-18}px`);
+    });
+  };
+  addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(updateScrollMotion)},{passive:true});
+  updateScrollMotion();
+}
