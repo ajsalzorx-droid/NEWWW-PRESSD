@@ -450,6 +450,15 @@ body.home-view{padding-bottom:0}
   .navbar,.navbar.scrolled,body.detail-view .navbar{position:fixed!important;top:max(8px,env(safe-area-inset-top))!important;left:8px!important;right:8px!important;width:auto!important;height:62px!important;padding:6px 8px!important;border:1px solid rgba(247,241,230,.24)!important;border-radius:16px!important;background:rgba(2,3,3,.94)!important;box-shadow:0 10px 35px #0007!important;backdrop-filter:blur(16px)}
 }
 
+/* Standout mobile menu-category navigator */
+@media(max-width:760px){
+  body.detail-view .menu-section .category-wrap{position:sticky;z-index:30;top:78px;margin:32px -1px 0;padding:6px;border:1px solid rgba(251,176,25,.68);border-radius:15px;background:rgba(2,3,3,.96);box-shadow:0 12px 34px #0009;backdrop-filter:blur(16px);overflow:hidden}
+  body.detail-view .menu-section .category-wrap:after{content:"";position:absolute;z-index:2;top:6px;right:5px;bottom:6px;width:32px;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(2,3,3,.96))}
+  body.detail-view .menu-section .categories{gap:5px;padding:0 30px 0 0;border:0;border-radius:10px;background:transparent;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+  body.detail-view .menu-section .categories button{flex:none;min-height:46px;padding:12px 18px;border:1px solid transparent;border-radius:11px;color:var(--cream);font-size:9px;font-weight:700;letter-spacing:.11em;scroll-snap-align:start;transition:background .25s,color .25s,border-color .25s}
+  body.detail-view .menu-section .categories button.active{border-color:var(--orange);background:var(--orange);color:var(--ink);box-shadow:0 6px 20px rgba(251,176,25,.22)}
+}
+
 /* Clear mobile carousel hierarchy and safe navigation spacing. */
 .hero-rail-head{display:none}
 @media(max-width:760px){
