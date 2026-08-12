@@ -746,3 +746,13 @@ body.home-view{padding-bottom:0}
   body.home-view .hero-bottom>p{max-width:195px;font-size:10px}
   body.home-view .hero-rail .rail-card,body.home-view .hero-rail .rail-card:first-child{flex-basis:79vw!important;height:188px!important}
 }
+
+/* Match the desktop cart celebration on touch devices. */
+@media(max-width:760px){
+  .navbar .cart-toggle{position:relative;overflow:visible;transform-origin:center}
+  .navbar .cart-toggle.cart-bump{animation:cartBump .65s var(--ease)}
+  .navbar .cart-toggle.cart-bump:after{content:"";position:absolute;inset:-7px;border:1px solid var(--orange);border-radius:16px;animation:mobileCartHalo .75s var(--ease) forwards;pointer-events:none}
+  .cart-flyer{z-index:280;width:62px;height:62px;border-radius:18px;box-shadow:0 16px 44px #000c,0 0 0 7px rgba(251,176,25,.22)}
+  .cart-flight-trail,.cart-arrival-ring{z-index:279}
+}
+@keyframes mobileCartHalo{0%{opacity:.9;transform:scale(.75)}100%{opacity:0;transform:scale(1.45)}}

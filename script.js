@@ -230,7 +230,7 @@ const celebrateCartArrival=target=>{
 };
 const animateCartAdd=(button,name)=>{
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const target=window.innerWidth<=760?dockCart:cartToggle;
+  const target=cartToggle;
   button.classList.remove('is-added');
   void button.offsetWidth;
   button.classList.add('is-added');
