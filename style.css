@@ -419,6 +419,10 @@ body.home-view{padding-bottom:0}
 .visit-video-cover:hover:before{background:linear-gradient(180deg,rgba(0,0,0,.16) 0%,rgba(0,0,0,.06) 38%,rgba(0,0,0,.68) 100%),linear-gradient(90deg,rgba(0,0,0,.4) 0%,transparent 58%)}
 .visit-video-cover span{box-shadow:0 12px 35px #0007}
 @media(max-width:760px){.visit-video-cover:before{background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.78)),linear-gradient(90deg,rgba(0,0,0,.42),transparent)}}
+
+/* Warm off-white titles across the six homepage cards. */
+.hero-rail .rail-card>span{color:var(--cream)}
+.hero-rail .rail-card>span b{color:var(--orange)}
 @keyframes mobileSectionIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 
 /* Open related content beside the hero, without moving down the page. */
