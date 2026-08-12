@@ -79,12 +79,26 @@ document.querySelectorAll('.hero-rail a[href^="#"]').forEach(link=>link.addEvent
 // Auto-advance the six hero cards on phones; touching the rail pauses it.
 const heroRail=document.querySelector('.hero-rail');
 const heroCards=[...heroRail.querySelectorAll('.rail-card')];
+const carouselDots=document.createElement('div');
+carouselDots.className='hero-carousel-dots';
+carouselDots.setAttribute('aria-label','Explore slide position');
+carouselDots.innerHTML=heroCards.map((card,index)=>`<button type="button" aria-label="Show ${card.innerText.trim()}" data-slide="${index}"></button>`).join('');
+heroRail.after(carouselDots);
+const dotButtons=[...carouselDots.querySelectorAll('button')];
 const mobileCarousel=matchMedia('(max-width:760px)');
 let carouselIndex=0,carouselTimer=0,carouselResumeTimer=0;
+const updateCarouselDots=()=>dotButtons.forEach((dot,index)=>{
+  dot.classList.toggle('active',index===carouselIndex);
+  dot.setAttribute('aria-current',index===carouselIndex?'true':'false');
+});
+const goToCarouselSlide=(index,behavior='smooth')=>{
+  carouselIndex=(index+heroCards.length)%heroCards.length;
+  heroRail.scrollTo({left:heroCards[carouselIndex].offsetLeft-heroRail.offsetLeft,behavior});
+  updateCarouselDots();
+};
 const moveCarousel=()=>{
   if(!mobileCarousel.matches||document.hidden||!document.body.classList.contains('home-view'))return;
-  carouselIndex=(carouselIndex+1)%heroCards.length;
-  heroRail.scrollTo({left:heroCards[carouselIndex].offsetLeft-heroRail.offsetLeft,behavior:'smooth'});
+  goToCarouselSlide(carouselIndex+1);
 };
 const startCarousel=()=>{
   clearInterval(carouselTimer);
@@ -100,9 +114,12 @@ heroRail.addEventListener('touchstart',pauseCarousel,{passive:true});
 heroRail.addEventListener('scroll',()=>{
   const nearest=heroCards.reduce((best,card,index)=>Math.abs(card.offsetLeft-heroRail.scrollLeft)<best.distance?{index,distance:Math.abs(card.offsetLeft-heroRail.scrollLeft)}:best,{index:0,distance:Infinity});
   carouselIndex=nearest.index;
+  updateCarouselDots();
 },{passive:true});
+dotButtons.forEach(dot=>dot.addEventListener('click',()=>{pauseCarousel();goToCarouselSlide(Number(dot.dataset.slide))}));
 document.addEventListener('visibilitychange',()=>document.hidden?clearInterval(carouselTimer):startCarousel());
 mobileCarousel.addEventListener('change',startCarousel);
+updateCarouselDots();
 startCarousel();
 
 // Every fresh page load begins with the branded loader, then reveals the hero.
