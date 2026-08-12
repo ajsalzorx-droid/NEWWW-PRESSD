@@ -53,6 +53,20 @@ const openHome=()=>{
   window.scrollTo({top:0,behavior:reducedMotion?'auto':'smooth'});
 };
 
+// Give every detail panel a consistent, accessible return to the home portal.
+detailSections.forEach(section=>{
+  const backButton=document.createElement('button');
+  backButton.className='panel-home-button';
+  backButton.type='button';
+  backButton.setAttribute('aria-label','Back to PRESS’D home');
+  backButton.innerHTML='<span aria-hidden="true">⌂</span>';
+  backButton.addEventListener('click',()=>{
+    openHome();
+    history.replaceState(null,'','#home');
+  });
+  section.prepend(backButton);
+});
+
 // Make every hero quick-link reveal only its matching section.
 document.querySelectorAll('.hero-rail a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{
   const target=document.querySelector(link.getAttribute('href'));

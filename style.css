@@ -225,6 +225,12 @@ body{font-size:16px}.hero h1{font-size:clamp(58px,6.4vw,102px);line-height:.84}.
   .rail-card span{min-width:0;width:88%;padding-left:16px}
 }
 
+.panel-home-button{position:sticky;z-index:12;top:16px;left:100%;display:grid;place-items:center;width:48px;height:48px;margin:0 0 18px auto;padding:0;border:1px solid rgba(251,176,25,.58);border-radius:50%;background:rgba(2,3,3,.9);color:var(--orange);cursor:pointer;box-shadow:0 10px 30px #0005;backdrop-filter:blur(12px);transition:background .3s,color .3s,transform .3s}
+.panel-home-button span{font:400 25px/1 DM Sans}
+.panel-home-button:hover{background:var(--orange);color:var(--ink);transform:translateY(-2px)}
+body.home-view .panel-home-button{display:none}
+@media(max-width:760px){.panel-home-button{top:76px;width:46px;height:46px;margin-bottom:16px}.panel-home-button:active{transform:scale(.94)}}
+
 /* Polished mobile experience */
 @media(max-width:760px){
   html{scroll-padding-top:78px}
