@@ -608,3 +608,21 @@ body.home-view{padding-bottom:0}
   body.detail-view .menu-section.active-detail{padding-left:0;padding-right:0}
   body.detail-view .menu-section .menu-grid{grid-template-columns:1fr 1fr}
 }
+
+/* Delightful add-to-cart feedback. */
+.add-cart{position:relative;overflow:hidden;isolation:isolate}
+.add-cart:after{content:"";position:absolute;inset:0;background:var(--orange);transform:translateY(105%);transition:transform .38s var(--ease);z-index:-1}
+.add-cart.is-added{border-color:var(--orange);color:var(--ink);animation:addButtonPop .55s var(--ease)}
+.add-cart.is-added:after{transform:translateY(0)}
+.cart-flyer{position:fixed;z-index:250;width:62px;height:62px;border:2px solid var(--orange);border-radius:50%;object-fit:cover;background:var(--orange);color:var(--ink);display:grid;place-items:center;font:800 30px Manrope;pointer-events:none;box-shadow:0 12px 36px #0009,0 0 0 6px rgba(251,176,25,.2)}
+.cart-toggle.cart-bump,.dock-cart.cart-bump{animation:cartBump .65s var(--ease)}
+.cart-toggle.cart-bump span,.dock-cart.cart-bump i{animation:badgePulse .65s var(--ease)}
+.add-burst{position:fixed;z-index:249;width:8px;height:8px;pointer-events:none}
+.add-burst i{position:absolute;inset:0;border-radius:50%;background:var(--orange);animation:addSpark .65s var(--ease) forwards}
+.add-burst i:nth-child(2){--x:32px;--y:-22px}.add-burst i:nth-child(3){--x:36px;--y:14px}.add-burst i:nth-child(4){--x:-30px;--y:20px}.add-burst i:nth-child(5){--x:-34px;--y:-15px}.add-burst i:nth-child(6){--x:4px;--y:34px}
+.add-burst i:first-child{--x:0;--y:-38px}
+@keyframes addButtonPop{0%{transform:scale(1)}45%{transform:scale(.92)}75%{transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes cartBump{0%,100%{transform:scale(1)}35%{transform:scale(1.16) rotate(-3deg)}65%{transform:scale(.96) rotate(2deg)}}
+@keyframes badgePulse{50%{box-shadow:0 0 0 10px rgba(251,176,25,0);transform:scale(1.3)}}
+@keyframes addSpark{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(0)}}
+@media(prefers-reduced-motion:reduce){.cart-flyer,.add-burst{display:none}.add-cart.is-added,.cart-toggle.cart-bump,.dock-cart.cart-bump{animation-duration:.01ms}}
