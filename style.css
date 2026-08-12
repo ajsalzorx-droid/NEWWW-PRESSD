@@ -423,6 +423,12 @@ body.home-view{padding-bottom:0}
 /* Warm off-white titles across the six homepage cards. */
 .hero-rail .rail-card>span{color:var(--cream)}
 .hero-rail .rail-card>span b{color:var(--orange)}
+
+/* Soft off-white strokes for all six homepage cards. */
+.hero-rail .rail-card{outline-color:rgba(247,241,230,.42)}
+.hero-rail .rail-card>span b{border-color:rgba(247,241,230,.48)}
+.hero-rail .rail-card:hover{outline-color:rgba(247,241,230,.78)}
+@media(max-width:760px){.hero-rail .rail-card,.hero-rail .rail-card:first-child{outline-color:rgba(247,241,230,.46)}}
 @keyframes mobileSectionIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 
 /* Open related content beside the hero, without moving down the page. */
