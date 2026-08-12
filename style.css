@@ -404,6 +404,10 @@ body.home-view{padding-bottom:0}
   .hero-carousel-dots button.active{width:24px;background:var(--orange)}
   body.detail-view .hero-carousel-dots{display:none}
 }
+
+.hero-round-link{border:0;background:transparent;overflow:visible}
+.hero-round-link img{width:32px;height:32px;object-fit:contain;display:block;filter:none;transition:transform .3s var(--ease)}
+.hero-round-link:hover img{transform:scale(1.1)}
 @keyframes mobileSectionIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 
 /* Open related content beside the hero, without moving down the page. */
