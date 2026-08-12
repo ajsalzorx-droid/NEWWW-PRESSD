@@ -388,3 +388,36 @@ body.home-view{padding-bottom:0}
   body.detail-view>footer{display:none}
 }
 @keyframes detailPanelIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+
+/* Unified alignment system for all content and media. */
+:root{--content-pad:clamp(22px,4vw,64px);--panel-radius:20px}
+.intro-grid,.healthy-head,.gallery-head,.visit,.pet-min-grid{align-items:center}
+.intro-grid>*,.healthy-head>*,.gallery-head>*,.visit>*,.pet-min-grid>*{min-width:0}
+.intro h2,.menu-intro h2,.signature h2,.split h2,.healthy h2,.gallery h2,.visit h2,.pet-min-copy h2{max-width:100%;overflow-wrap:normal}
+.split-image>img,.pet-min-image img,.healthy-cards img,.gallery-grid img,.menu-img img{object-position:center}
+.split-copy p:not(.eyebrow),.pet-min-copy>p,.healthy-head>p,.menu-intro>p:last-child{max-width:52ch}
+.menu-card-info{align-items:flex-start}
+.menu-card-info>div:first-child{min-width:0}
+.line-item{align-items:start}
+@media(min-width:761px){
+  body.detail-view main>section.active-detail{padding-left:var(--content-pad);padding-right:var(--content-pad)}
+  body.detail-view .menu-section.active-detail{padding-left:0;padding-right:0}
+  body.detail-view .intro-grid,body.detail-view .healthy-head,body.detail-view .visit{grid-template-columns:1fr;gap:44px;align-items:start}
+  body.detail-view .intro h2,body.detail-view .healthy h2,body.detail-view .visit h2{font-size:clamp(52px,5vw,78px)}
+  body.detail-view .pet-min-grid{grid-template-columns:1fr;gap:42px;align-items:start}
+  body.detail-view .pet-min-image{height:58vh;min-height:430px}
+  body.detail-view .pet-min-copy{padding:0 0 20px}
+  body.detail-view .gallery-head{align-items:end}
+  body.detail-view .gallery-grid{grid-template-rows:360px 280px}
+  body.detail-view .healthy-cards{grid-template-columns:1fr 1fr;gap:14px;margin-top:55px}
+  body.detail-view .healthy-cards figure:last-child{grid-column:1/-1}
+  body.detail-view .healthy-cards img{height:390px}
+  body.detail-view .visit-video-cover{height:58vh;min-height:430px}
+}
+@media(max-width:760px){
+  .intro-grid,.healthy-head,.visit,.pet-min-grid{align-items:start}
+  .section{padding-left:18px;padding-right:18px}
+  .split-copy{padding-left:20px;padding-right:20px}
+  .menu-card-info{display:grid;grid-template-columns:minmax(0,1fr) auto}
+  .gallery-head{align-items:start}
+}
