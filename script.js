@@ -49,17 +49,18 @@ document.querySelectorAll('.hero-rail a[href^="#"]').forEach(link=>link.addEvent
   history.replaceState(null,'',link.getAttribute('href'));
 }));
 
-// Re-apply deep links after the branded loader and image layout have settled.
+// Every fresh page load begins with the branded loader, then reveals the hero.
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+window.scrollTo(0,0);
 window.addEventListener('load',()=>{
-  if(!location.hash)return;
-  const target=document.querySelector(location.hash);
-  if(!target)return;
+  const root=document.documentElement;
+  const previousBehavior=root.style.scrollBehavior;
+  root.style.scrollBehavior='auto';
+  window.scrollTo(0,0);
+  if(location.hash!=='#home')history.replaceState(null,'','#home');
   setTimeout(()=>{
-    const root=document.documentElement;
-    const previousBehavior=root.style.scrollBehavior;
-    root.style.scrollBehavior='auto';
-    window.scrollTo(0,target.offsetTop-88);
-    requestAnimationFrame(()=>{root.style.scrollBehavior=previousBehavior});
+    window.scrollTo(0,0);
+    root.style.scrollBehavior=previousBehavior;
   },1250);
 });
 
