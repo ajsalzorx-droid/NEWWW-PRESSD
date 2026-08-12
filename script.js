@@ -59,6 +59,35 @@ document.querySelectorAll('.hero-rail a[href^="#"]').forEach(link=>link.addEvent
   history.replaceState(null,'',link.getAttribute('href'));
 }));
 
+// Auto-advance the six hero cards on phones; touching the rail pauses it.
+const heroRail=document.querySelector('.hero-rail');
+const heroCards=[...heroRail.querySelectorAll('.rail-card')];
+const mobileCarousel=matchMedia('(max-width:760px)');
+let carouselIndex=0,carouselTimer=0,carouselResumeTimer=0;
+const moveCarousel=()=>{
+  if(!mobileCarousel.matches||document.hidden||!document.body.classList.contains('home-view'))return;
+  carouselIndex=(carouselIndex+1)%heroCards.length;
+  heroRail.scrollTo({left:heroCards[carouselIndex].offsetLeft-heroRail.offsetLeft,behavior:'smooth'});
+};
+const startCarousel=()=>{
+  clearInterval(carouselTimer);
+  if(mobileCarousel.matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches)carouselTimer=setInterval(moveCarousel,3200);
+};
+const pauseCarousel=()=>{
+  clearInterval(carouselTimer);
+  clearTimeout(carouselResumeTimer);
+  carouselResumeTimer=setTimeout(startCarousel,6500);
+};
+heroRail.addEventListener('pointerdown',pauseCarousel,{passive:true});
+heroRail.addEventListener('touchstart',pauseCarousel,{passive:true});
+heroRail.addEventListener('scroll',()=>{
+  const nearest=heroCards.reduce((best,card,index)=>Math.abs(card.offsetLeft-heroRail.scrollLeft)<best.distance?{index,distance:Math.abs(card.offsetLeft-heroRail.scrollLeft)}:best,{index:0,distance:Infinity});
+  carouselIndex=nearest.index;
+},{passive:true});
+document.addEventListener('visibilitychange',()=>document.hidden?clearInterval(carouselTimer):startCarousel());
+mobileCarousel.addEventListener('change',startCarousel);
+startCarousel();
+
 // Every fresh page load begins with the branded loader, then reveals the hero.
 if('scrollRestoration' in history)history.scrollRestoration='manual';
 window.scrollTo(0,0);
