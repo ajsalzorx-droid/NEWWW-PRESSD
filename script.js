@@ -59,12 +59,32 @@ detailSections.forEach(section=>{
   backButton.className='panel-home-button';
   backButton.type='button';
   backButton.setAttribute('aria-label','Back to PRESS’D home');
-  backButton.innerHTML='<span aria-hidden="true">⌂</span>';
+  backButton.innerHTML='<span aria-hidden="true">⌂</span><small>Home</small>';
   backButton.addEventListener('click',()=>{
     openHome();
     history.replaceState(null,'','#home');
   });
   section.prepend(backButton);
+  let lastPanelScroll=0,iconMotionTimer=0,iconFollowFrame=0;
+  section.addEventListener('scroll',()=>{
+    const nextPanelScroll=section.scrollTop;
+    if(!iconFollowFrame)iconFollowFrame=requestAnimationFrame(()=>{
+      iconFollowFrame=0;
+      const maxPanelScroll=Math.max(1,section.scrollHeight-section.clientHeight);
+      const topClearance=16;
+      const bottomClearance=104;
+      const iconTravel=Math.max(0,section.clientHeight-backButton.offsetHeight-topClearance-bottomClearance);
+      const progress=Math.max(0,Math.min(1,section.scrollTop/maxPanelScroll));
+      backButton.style.setProperty('--icon-follow-y',`${Math.round(progress*iconTravel)}px`);
+      backButton.setAttribute('data-scroll-progress',`${Math.round(progress*100)}%`);
+    });
+    if(Math.abs(nextPanelScroll-lastPanelScroll)<3)return;
+    backButton.classList.toggle('scrolling-down',nextPanelScroll>lastPanelScroll);
+    backButton.classList.toggle('scrolling-up',nextPanelScroll<lastPanelScroll);
+    lastPanelScroll=nextPanelScroll;
+    clearTimeout(iconMotionTimer);
+    iconMotionTimer=setTimeout(()=>backButton.classList.remove('scrolling-down','scrolling-up'),180);
+  },{passive:true});
 });
 
 // Make every hero quick-link reveal only its matching section.
