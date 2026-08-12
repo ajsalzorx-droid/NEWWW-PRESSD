@@ -41,7 +41,10 @@ const openRelatedSection=(target,behavior='smooth')=>{
   detailSections.forEach(section=>section.classList.toggle('active-detail',section===target));
   document.body.classList.remove('home-view');
   document.body.classList.add('detail-view');
-  requestAnimationFrame(()=>window.scrollTo({top:target.offsetTop-88,behavior}));
+  requestAnimationFrame(()=>{
+    window.scrollTo({top:0,behavior:'auto'});
+    target.scrollTop=0;
+  });
 };
 const openHome=()=>{
   detailSections.forEach(section=>section.classList.remove('active-detail'));

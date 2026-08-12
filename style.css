@@ -352,3 +352,39 @@ body.home-view{padding-bottom:0}
   .mobile-dock{padding-bottom:max(5px,env(safe-area-inset-bottom));height:calc(64px + env(safe-area-inset-bottom))}
 }
 @keyframes mobileSectionIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+/* Open related content beside the hero, without moving down the page. */
+@media(min-width:761px){
+  body.detail-view{height:100vh;overflow:hidden;background:var(--ink);padding:0}
+  body.detail-view main{height:100vh;padding:15px;display:grid;grid-template-columns:minmax(420px,.98fr) minmax(0,1.02fr);gap:15px}
+  body.detail-view .hero{display:block!important;height:calc(100vh - 30px);min-height:0;padding:0;background:transparent}
+  body.detail-view .hero-main{height:100%;border-radius:20px}
+  body.detail-view .hero-rail{display:none}
+  body.detail-view .hero-content{left:4vw;right:3vw;bottom:4.5vh}
+  body.detail-view .hero h1{font-size:clamp(58px,5.4vw,92px)}
+  body.detail-view .navbar{left:4.6vw;right:auto;width:calc(47.5vw - 9.2vw);max-width:620px;min-width:560px}
+  body.detail-view .navbar .desktop-nav{gap:18px}
+  body.detail-view .navbar .desktop-nav a{font-size:9px}
+  body.detail-view .navbar .desktop-nav a:nth-child(4),body.detail-view .navbar .desktop-nav a:nth-child(5){display:none}
+  body.detail-view .navbar>.book-btn{display:none}
+  body.detail-view main>section.active-detail{display:block!important;height:calc(100vh - 30px);min-height:0;overflow-y:auto;overscroll-behavior:contain;border:1px solid rgba(251,176,25,.2);border-radius:20px;scrollbar-width:thin;scrollbar-color:var(--orange) transparent;animation:detailPanelIn .65s var(--ease) both}
+  body.detail-view main>section.active-detail::-webkit-scrollbar{width:5px}
+  body.detail-view main>section.active-detail::-webkit-scrollbar-thumb{background:var(--orange);border-radius:10px}
+  body.detail-view .menu-section.active-detail{padding:72px 0;background:var(--ink);color:var(--cream)}
+  body.detail-view .menu-section .menu-intro{padding:0 4vw}
+  body.detail-view .menu-section .menu-content{padding:0 4vw}
+  body.detail-view .menu-section .category-wrap{position:sticky;top:0;margin:40px 0 0;z-index:5}
+  body.detail-view .menu-section .categories{border-radius:0}
+  body.detail-view .menu-section .menu-grid{grid-template-columns:1fr 1fr}
+  body.detail-view .menu-section .menu-category{padding-top:75px}
+  body.detail-view .menu-section .menu-img{height:260px}
+  body.detail-view .menu-section .editorial{grid-template-columns:1fr;min-height:0}
+  body.detail-view .menu-section .editorial-image{height:420px}
+  body.detail-view .menu-section .editorial.flip .editorial-image{order:0}
+  body.detail-view .intro.active-detail,body.detail-view .healthy.active-detail,body.detail-view .gallery.active-detail,body.detail-view .visit.active-detail,body.detail-view .pet-premium.active-detail{padding:72px 4vw}
+  body.detail-view .split.active-detail{display:flex!important;flex-direction:column}
+  body.detail-view .split-image{min-height:52vh}
+  body.detail-view .split-copy{padding:70px 4vw}
+  body.detail-view>footer{display:none}
+}
+@keyframes detailPanelIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
