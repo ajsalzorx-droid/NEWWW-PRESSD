@@ -269,6 +269,22 @@ body.home-view .section-home-button{display:none}
   body.detail-view main>section.active-detail{margin:0 6px;padding-left:14px;padding-right:14px}
 }
 
+/* Standard mobile top navigation */
+@media(max-width:760px){
+  .navbar,.navbar.scrolled,body.detail-view .navbar{position:fixed;z-index:96;top:max(8px,env(safe-area-inset-top));left:8px;right:8px;width:auto;height:62px;padding:6px 8px;border:1px solid rgba(247,241,230,.24);border-radius:16px;background:rgba(2,3,3,.94);box-shadow:0 10px 35px #0007;backdrop-filter:blur(16px)}
+  .navbar .logo{width:118px;height:44px;margin:0 auto 0 5px}
+  .navbar .logo img{height:44px}
+  .navbar .cart-toggle{display:flex;align-items:center;justify-content:center;min-width:72px;height:44px;margin-left:auto;padding:8px 10px;border-radius:11px}
+  .navbar .menu-toggle{display:block;width:44px;height:44px;padding:9px;border-radius:11px}
+  .navbar .menu-toggle i{margin:7px 0}
+  .mobile-menu{z-index:94;padding-top:calc(104px + env(safe-area-inset-top))}
+  body.home-view .hero-main{padding-top:0}
+}
+@media(max-width:360px){
+  .navbar .logo{width:104px}
+  .navbar .cart-toggle{min-width:64px;padding:7px 8px;font-size:7px}
+}
+
 
 /* Polished mobile experience */
 @media(max-width:760px){
@@ -429,6 +445,10 @@ body.home-view{padding-bottom:0}
 .hero-rail .rail-card>span b{border-color:rgba(247,241,230,.48)}
 .hero-rail .rail-card:hover{outline-color:rgba(247,241,230,.78)}
 @media(max-width:760px){.hero-rail .rail-card,.hero-rail .rail-card:first-child{outline-color:rgba(247,241,230,.46)}}
+
+@media(max-width:760px){
+  .navbar,.navbar.scrolled,body.detail-view .navbar{position:fixed!important;top:max(8px,env(safe-area-inset-top))!important;left:8px!important;right:8px!important;width:auto!important;height:62px!important;padding:6px 8px!important;border:1px solid rgba(247,241,230,.24)!important;border-radius:16px!important;background:rgba(2,3,3,.94)!important;box-shadow:0 10px 35px #0007!important;backdrop-filter:blur(16px)}
+}
 
 /* Clear mobile carousel hierarchy and safe navigation spacing. */
 .hero-rail-head{display:none}
