@@ -36,16 +36,26 @@ booking.querySelector('form').addEventListener('submit',e=>{e.preventDefault();b
 const lightbox=document.querySelector('.lightbox');document.querySelectorAll('.gallery-grid button').forEach(b=>b.addEventListener('click',()=>{lightbox.querySelector('img').src=b.querySelector('img').src;lightbox.querySelector('img').alt=b.querySelector('img').alt;lightbox.showModal()}));
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)d.close()}));
 
-// Make every hero quick-link land at the top of its matching section.
+const detailSections=[...document.querySelectorAll('main>section:not(.hero)')];
+const openRelatedSection=(target,behavior='smooth')=>{
+  detailSections.forEach(section=>section.classList.toggle('active-detail',section===target));
+  document.body.classList.remove('home-view');
+  document.body.classList.add('detail-view');
+  requestAnimationFrame(()=>window.scrollTo({top:target.offsetTop-88,behavior}));
+};
+const openHome=()=>{
+  detailSections.forEach(section=>section.classList.remove('active-detail'));
+  document.body.classList.remove('detail-view');
+  document.body.classList.add('home-view');
+  window.scrollTo({top:0,behavior:reducedMotion?'auto':'smooth'});
+};
+
+// Make every hero quick-link reveal only its matching section.
 document.querySelectorAll('.hero-rail a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{
   const target=document.querySelector(link.getAttribute('href'));
   if(!target)return;
   event.preventDefault();
-  const root=document.documentElement;
-  const previousBehavior=root.style.scrollBehavior;
-  root.style.scrollBehavior='auto';
-  window.scrollTo(0,target.getBoundingClientRect().top+window.scrollY-88);
-  requestAnimationFrame(()=>{root.style.scrollBehavior=previousBehavior});
+  openRelatedSection(target,reducedMotion?'auto':'smooth');
   history.replaceState(null,'',link.getAttribute('href'));
 }));
 
@@ -92,12 +102,12 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
     const target=document.querySelector(link.getAttribute('href'));
     if(!target)return;
     event.preventDefault();
-    window.scrollTo({top:target.offsetTop-88,behavior:reducedMotion?'auto':'smooth'});
+    if(link.getAttribute('href')==='#home')openHome();else openRelatedSection(target,reducedMotion?'auto':'smooth');
     history.replaceState(null,'',link.getAttribute('href'));
   });
 });
 const backToTop=document.querySelector('.back-to-top');
-backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:reducedMotion?'auto':'smooth'}));
+backToTop.addEventListener('click',()=>{openHome();history.replaceState(null,'','#home')});
 addEventListener('scroll',()=>backToTop.classList.toggle('visible',scrollY>700),{passive:true});
 const primaryLinks=[...document.querySelectorAll('.desktop-nav a[href^="#"]')];
 const primarySections=primaryLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);

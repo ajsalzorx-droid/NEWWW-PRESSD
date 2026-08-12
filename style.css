@@ -305,9 +305,26 @@ body{font-size:16px}.hero h1{font-size:clamp(58px,6.4vw,102px);line-height:.84}.
 .visit-video-cover b{max-width:72%;font-size:clamp(30px,5vw,72px);line-height:.88;text-align:right;letter-spacing:-.06em}
 @media(max-width:760px){.visit-video-cover b{max-width:70%;font-size:clamp(27px,8vw,42px)}}
 
-/* At-a-glance hero information and six quick-access cards */
-.hero-details{display:flex;align-items:center;gap:9px;margin:0 0 20px;flex-wrap:wrap}
-.hero-details span,.hero-details strong{padding:8px 11px;border:1px solid rgba(251,176,25,.5);border-radius:99px;background:rgba(2,3,3,.48);color:var(--cream);font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(8px)}
-.hero-details strong{background:var(--orange);color:var(--ink);border-color:var(--orange)}
-@media(min-width:761px){.hero-rail{grid-template:repeat(3,minmax(0,1fr))/repeat(2,minmax(0,1fr))}.hero-rail .feature-card span{width:96%;min-width:0}}
-@media(max-width:760px){.hero-details{gap:6px;margin-bottom:15px}.hero-details span,.hero-details strong{padding:7px 9px;font-size:7px}.hero-rail:after{content:'Swipe to explore all 6';flex:0 0 28px;align-self:center;color:var(--orange);font-size:8px;letter-spacing:.12em;text-transform:uppercase;writing-mode:vertical-rl}}
+/* Minimal six-card hero; full information lives in each destination section. */
+@media(min-width:761px){.hero-rail{grid-template:repeat(3,minmax(0,1fr))/repeat(2,minmax(0,1fr))}.hero-rail .rail-card span{width:88%;min-width:0}}
+@media(max-width:760px){.hero-rail:after{content:'Swipe to explore all 6';flex:0 0 28px;align-self:center;color:var(--orange);font-size:8px;letter-spacing:.12em;text-transform:uppercase;writing-mode:vertical-rl}}
+
+/* Café 72-inspired framing, translated into PRESS'D branding. */
+@media(min-width:1101px){
+  .hero{grid-template-columns:minmax(0,2.42fr) minmax(390px,1fr);gap:15px;padding:15px}
+  .hero-main,.rail-card{border-radius:20px}
+  .hero-rail{gap:15px}
+  .navbar{left:4.6vw;right:auto;width:min(820px,calc(100% - 9.2vw));top:7.2vh;height:64px;padding:7px 8px 7px 16px;border-color:rgba(251,176,25,.55);background:rgba(2,3,3,.92);backdrop-filter:blur(14px)}
+  .navbar.scrolled{left:3vw;right:3vw;width:auto}
+  .hero-content{left:5vw;bottom:6.5vh}
+  .hero h1{max-width:850px;font-size:clamp(68px,6.5vw,106px)}
+  .rail-card span{right:0;bottom:0;border-radius:22px 0 0 0}
+}
+.intro,.menu-section,.signature,.split,.healthy,.gallery,.pet-premium,.visit{scroll-margin-top:76px}
+.section-motion{will-change:transform,opacity}
+
+/* Home is a focused portal: reveal detailed content only when requested. */
+body.home-view main>section:not(.hero),body.home-view>footer{display:none}
+body.detail-view main>section:not(.hero):not(.active-detail){display:none}
+body.detail-view>footer{display:block}
+body.home-view{padding-bottom:0}
