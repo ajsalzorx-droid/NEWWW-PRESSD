@@ -304,3 +304,10 @@ body{font-size:16px}.hero h1{font-size:clamp(58px,6.4vw,102px);line-height:.84}.
 
 .visit-video-cover b{max-width:72%;font-size:clamp(30px,5vw,72px);line-height:.88;text-align:right;letter-spacing:-.06em}
 @media(max-width:760px){.visit-video-cover b{max-width:70%;font-size:clamp(27px,8vw,42px)}}
+
+/* At-a-glance hero information and six quick-access cards */
+.hero-details{display:flex;align-items:center;gap:9px;margin:0 0 20px;flex-wrap:wrap}
+.hero-details span,.hero-details strong{padding:8px 11px;border:1px solid rgba(251,176,25,.5);border-radius:99px;background:rgba(2,3,3,.48);color:var(--cream);font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(8px)}
+.hero-details strong{background:var(--orange);color:var(--ink);border-color:var(--orange)}
+@media(min-width:761px){.hero-rail{grid-template:repeat(3,minmax(0,1fr))/repeat(2,minmax(0,1fr))}.hero-rail .feature-card span{width:96%;min-width:0}}
+@media(max-width:760px){.hero-details{gap:6px;margin-bottom:15px}.hero-details span,.hero-details strong{padding:7px 9px;font-size:7px}.hero-rail:after{content:'Swipe to explore all 6';flex:0 0 28px;align-self:center;color:var(--orange);font-size:8px;letter-spacing:.12em;text-transform:uppercase;writing-mode:vertical-rl}}
