@@ -410,9 +410,9 @@ body.home-view{padding-bottom:0}
 .hero-round-link:hover img{transform:scale(1.1)}
 
 /* Keep the Pet Friendly card focused on the dog. */
-.hero-rail a[href="#pets"]>img{object-position:72% 42%;transform:scale(1.08)}
-.hero-rail a[href="#pets"]:hover>img{transform:scale(1.13)}
-@media(max-width:760px){.hero-rail a[href="#pets"]>img{object-position:74% 40%;transform:scale(1.12)}}
+.hero-rail a[href="#pets"]>img{object-position:50% 48%;transform:scale(1.03)}
+.hero-rail a[href="#pets"]:hover>img{transform:scale(1.08)}
+@media(max-width:760px){.hero-rail a[href="#pets"]>img{object-position:50% 46%;transform:scale(1.06)}}
 
 /* Cinematic readability overlay for Visit Us cover. */
 .visit-video-cover:before{background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.78) 100%),linear-gradient(90deg,rgba(0,0,0,.48) 0%,transparent 58%);transition:background .45s var(--ease)}
