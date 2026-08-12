@@ -225,14 +225,50 @@ body{font-size:16px}.hero h1{font-size:clamp(58px,6.4vw,102px);line-height:.84}.
   .rail-card span{min-width:0;width:88%;padding-left:16px}
 }
 
-.panel-home-button{--icon-follow-y:0px;position:sticky;z-index:12;top:16px;left:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:52px;height:52px;margin:0 0 18px auto;padding:0;border:1px solid rgba(251,176,25,.58);border-radius:15px;background:rgba(2,3,3,.92);color:var(--orange);cursor:pointer;box-shadow:0 10px 30px #0005;backdrop-filter:blur(12px);transform:translateY(var(--icon-follow-y));transition:background .3s,color .3s,transform .18s linear,box-shadow .22s}
-.panel-home-button span{font:400 20px/1 DM Sans}.panel-home-button small{color:var(--cream);font:700 7px/1 DM Sans;letter-spacing:.07em;text-transform:uppercase}
-.panel-home-button:hover{background:var(--orange);color:var(--ink);transform:translateY(-2px)}
-body.home-view .panel-home-button{display:none}
-@media(max-width:760px){.panel-home-button{top:76px;width:46px;height:46px;margin-bottom:16px}.panel-home-button:active{transform:scale(.94)}}
-.panel-home-button.scrolling-down{box-shadow:0 16px 34px #0006;border-color:var(--orange)}
-.panel-home-button.scrolling-up{box-shadow:0 6px 24px #0005;border-color:var(--orange)}
-@media(prefers-reduced-motion:reduce){.panel-home-button{transition:none}}
+.section-home-button{position:relative;z-index:8;display:grid;place-items:center;width:44px;height:44px;margin:42px 0 8px auto;padding:0;border:1px solid rgba(251,176,25,.55);border-radius:50%;background:var(--ink);color:var(--orange);font-size:20px;line-height:1;cursor:pointer;transition:background .25s,color .25s,transform .25s}
+.section-home-button:hover{background:var(--orange);color:var(--ink);transform:translateY(-2px)}
+body.home-view .section-home-button{display:none}
+@media(max-width:760px){.section-home-button{width:42px;height:42px;margin:34px 0 8px auto}.section-home-button:active{transform:scale(.95)}}
+
+/* Final mobile composition */
+@media(max-width:760px){
+  body{background:var(--ink)}
+  body.home-view .hero{padding:8px 8px 88px}
+  body.home-view .hero-main{height:64svh;min-height:500px}
+  .hero-content{left:17px;right:17px;bottom:20px}
+  .hero h1{font-size:clamp(42px,12vw,54px)}
+  .hero-bottom>p{font-size:11px}
+  .hero-rail{margin-top:50px;padding-right:14vw}
+  .hero-rail .rail-card,.hero-rail .rail-card:first-child{flex-basis:74vw;height:204px}
+  body.detail-view{padding-bottom:76px;background:var(--ink)}
+  body.detail-view .hero{height:88px!important;min-height:88px!important;padding:8px!important;overflow:visible}
+  body.detail-view .hero-main{height:72px!important;min-height:72px!important;border-radius:16px;background:var(--ink)}
+  body.detail-view .hero-media,body.detail-view .hero-shade,body.detail-view .hero-content{display:none}
+  body.detail-view .navbar{position:fixed;top:8px;left:8px;right:8px;height:62px;border-color:rgba(251,176,25,.48);background:rgba(2,3,3,.94)}
+  body.detail-view main>section.active-detail{display:block!important;margin:0 8px;padding:58px 16px 88px;border:1px solid rgba(251,176,25,.2);border-radius:18px;background:var(--ink);color:var(--cream);animation:mobileSectionIn .55s var(--ease) both}
+  body.detail-view .menu-section.active-detail{padding-left:0;padding-right:0}
+  body.detail-view .menu-section .menu-intro{padding:0 16px}
+  body.detail-view .menu-section .menu-content{padding:0 12px}
+  body.detail-view .intro h2,body.detail-view .healthy h2,body.detail-view .visit h2,body.detail-view .signature h2,body.detail-view .split h2,body.detail-view .gallery h2{font-size:clamp(42px,12vw,56px)}
+  body.detail-view .pet-min-grid{gap:28px}
+  body.detail-view .pet-min-image{height:52svh;min-height:400px}
+  body.detail-view .pet-min-copy h2{font-size:clamp(44px,12vw,56px)}
+  body.detail-view .split-image{min-height:48svh}
+  body.detail-view .split-copy{padding:56px 18px 76px}
+  body.detail-view .menu-category{padding-top:64px}
+  body.detail-view .menu-img{height:72vw;max-height:320px}
+  body.detail-view .healthy-cards img{height:92vw;max-height:430px}
+  body.detail-view .gallery-grid{grid-template-rows:80vw 48vw 48vw}
+  body.detail-view .visit-video-cover{height:55svh;min-height:410px}
+  .section-home-button{width:48px;height:48px;margin:48px auto 0;border-radius:50%;font-size:22px}
+  .mobile-dock{z-index:95}
+}
+@media(max-width:380px){
+  body.home-view .hero-main{height:62svh;min-height:480px}
+  .hero h1{font-size:40px}
+  body.detail-view main>section.active-detail{margin:0 6px;padding-left:14px;padding-right:14px}
+}
+
 
 /* Polished mobile experience */
 @media(max-width:760px){
