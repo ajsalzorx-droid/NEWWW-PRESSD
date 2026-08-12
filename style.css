@@ -328,3 +328,27 @@ body.home-view main>section:not(.hero),body.home-view>footer{display:none}
 body.detail-view main>section:not(.hero):not(.active-detail){display:none}
 body.detail-view>footer{display:block}
 body.home-view{padding-bottom:0}
+
+/* Contemporary, thumb-friendly mobile home */
+@media(max-width:760px){
+  body.home-view .hero{min-height:100svh;padding-bottom:86px}
+  body.home-view .hero-main{height:66svh;min-height:510px}
+  .hero-content{bottom:22px}
+  .hero h1{font-size:clamp(44px,12.6vw,57px);line-height:.86}
+  .hero-bottom{margin-top:18px}
+  .hero-rail{position:relative;margin-top:52px;overflow:visible}
+  .hero-rail:before{content:attr(data-label);position:absolute;left:2px;top:-34px;color:var(--cream);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+  .hero-rail:after{content:attr(data-hint);position:absolute;right:2px;top:-35px;color:var(--orange);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;writing-mode:horizontal-tb}
+  .hero-rail .rail-card,.hero-rail .rail-card:first-child{flex-basis:76vw;height:210px;outline-color:rgba(251,176,25,.38);scroll-snap-align:start;transition:transform .3s var(--ease),outline-color .3s}
+  .hero-rail .rail-card:active{transform:scale(.975);outline-color:var(--orange)}
+  .hero-rail .rail-card span{height:54px;width:90%;font-size:15px}
+  .hero-rail .rail-card span b{width:36px;height:36px}
+  body.detail-view .hero{min-height:0;padding-bottom:8px}
+  body.detail-view .hero-main{height:35svh;min-height:290px}
+  body.detail-view .hero-content{bottom:18px}
+  body.detail-view .hero h1{font-size:38px}
+  body.detail-view .hero-bottom,body.detail-view .hero-rail{display:none}
+  body.detail-view main>section.active-detail{animation:mobileSectionIn .65s var(--ease) both}
+  .mobile-dock{padding-bottom:max(5px,env(safe-area-inset-bottom));height:calc(64px + env(safe-area-inset-bottom))}
+}
+@keyframes mobileSectionIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
