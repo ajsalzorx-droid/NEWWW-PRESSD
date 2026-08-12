@@ -429,6 +429,25 @@ body.home-view{padding-bottom:0}
 .hero-rail .rail-card>span b{border-color:rgba(247,241,230,.48)}
 .hero-rail .rail-card:hover{outline-color:rgba(247,241,230,.78)}
 @media(max-width:760px){.hero-rail .rail-card,.hero-rail .rail-card:first-child{outline-color:rgba(247,241,230,.46)}}
+
+/* Clear mobile carousel hierarchy and safe navigation spacing. */
+.hero-rail-head{display:none}
+@media(max-width:760px){
+  body.home-view .hero{padding-bottom:92px}
+  body.home-view .hero-main{height:61svh;min-height:485px}
+  .hero-rail-head{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 12px;color:var(--cream);font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+  .hero-rail-head b{color:var(--orange);font-weight:700}
+  .hero-rail{margin-top:0!important;padding:0 17vw 8px 0!important;overflow-x:auto!important;overflow-y:hidden!important}
+  .hero-rail:before,.hero-rail:after{content:none!important}
+  .hero-rail .rail-card,.hero-rail .rail-card:first-child{flex:0 0 76vw!important;height:198px!important;border-radius:17px}
+  .hero-rail .rail-card>span{height:52px;width:91%;padding-left:16px;font-size:14px}
+  .hero-carousel-dots{margin-top:10px!important}
+  .mobile-dock{bottom:max(7px,env(safe-area-inset-bottom));box-shadow:0 10px 40px #0009}
+}
+@media(max-width:380px){
+  body.home-view .hero-main{height:59svh;min-height:465px}
+  .hero-rail .rail-card,.hero-rail .rail-card:first-child{flex-basis:79vw!important;height:190px!important}
+}
 @keyframes mobileSectionIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 
 /* Open related content beside the hero, without moving down the page. */
