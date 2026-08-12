@@ -459,6 +459,10 @@ body.home-view{padding-bottom:0}
   body.detail-view .menu-section .categories button.active{border-color:var(--orange);background:var(--orange);color:var(--ink);box-shadow:0 6px 20px rgba(251,176,25,.22)}
 }
 
+/* Faster first impression: reveal the preloaded hero video quickly. */
+.loader{animation:loaderOut .38s .42s both}
+.loader-line{animation-duration:.55s}
+
 /* Clear mobile carousel hierarchy and safe navigation spacing. */
 .hero-rail-head{display:none}
 @media(max-width:760px){
