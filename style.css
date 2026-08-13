@@ -805,3 +805,70 @@ body.detail-view .menu-section .category-wrap:after{display:none}
   .navbar .logo,body.home-view .logo,body.detail-view .logo{width:116px;height:41px}
   .navbar .logo img,body.home-view .logo img,body.detail-view .logo img{max-height:41px}
 }
+
+/* Final responsive system: laptop, tablet and mobile. */
+@media(min-width:1101px){
+  body.home-view .hero{grid-template-columns:minmax(0,2.25fr) minmax(400px,.95fr);gap:14px;padding:14px}
+  body.home-view .hero-main,body.home-view .rail-card{border-radius:20px}
+  body.home-view .hero-rail{gap:14px}
+  .navbar{max-width:1180px;gap:clamp(18px,2vw,34px)}
+  .desktop-nav{gap:clamp(18px,2vw,34px)}
+  .desktop-nav a{white-space:nowrap}
+  body.detail-view main{max-width:1920px;margin:0 auto}
+  body.detail-view main>section.active-detail{scroll-padding-top:84px}
+}
+
+@media(min-width:761px) and (max-width:1100px){
+  .navbar,.navbar.scrolled,body.detail-view .navbar{gap:10px}
+  .navbar .logo{flex:none}
+  .cart-toggle{flex:none}
+  .menu-toggle{flex:none;display:block}
+  body.home-view .hero-rail .rail-card>span{line-height:1.05}
+  body.detail-view main>section.active-detail{scroll-padding-top:96px}
+  body.detail-view .menu-section .category-wrap{max-width:100%}
+  body.detail-view .menu-section .categories button{min-height:44px}
+}
+
+@media(min-width:761px) and (max-width:900px){
+  body.home-view .hero-main{height:62svh;min-height:520px}
+  body.home-view .hero-rail{grid-template-rows:repeat(2,178px)}
+  body.home-view .hero-rail .rail-card>span{font-size:11px}
+  body.detail-view main>section.active-detail{padding-top:68px}
+  body.detail-view .menu-section .menu-img{height:230px}
+  body.detail-view .gallery-grid{grid-template-rows:310px 230px}
+}
+
+@media(max-width:760px){
+  html{scroll-padding-top:82px}
+  body{width:100%;max-width:100%;overflow-x:hidden}
+  body.home-view .hero{width:100%;padding-left:8px;padding-right:8px}
+  body.home-view .hero-main{width:100%}
+  body.home-view .hero-content{max-width:calc(100% - 34px)}
+  body.home-view .hero-rail{max-width:100%;overscroll-behavior-inline:contain}
+  body.detail-view main{width:100%;max-width:100%;padding-left:8px;padding-right:8px}
+  body.detail-view main>section.active-detail{width:100%;margin-left:0;margin-right:0}
+  body.detail-view .menu-section .category-wrap{width:100%;margin-left:0;margin-right:0}
+  body.detail-view .menu-section .categories{scroll-snap-type:x proximity}
+  body.detail-view .menu-section .categories button{scroll-snap-align:center}
+  .navbar .cart-toggle,.navbar .menu-toggle{min-height:44px}
+  .mobile-dock a,.mobile-dock button{font-size:8px;line-height:1.1}
+  .cart-drawer{max-width:100vw}
+  .booking{max-height:92dvh;overflow-y:auto}
+  .pet-min-copy>p,.split-copy p:not(.eyebrow),.visit-info p{font-size:14px;line-height:1.65}
+}
+
+@media(max-width:430px){
+  body.home-view .hero-main{min-height:470px}
+  body.home-view .hero h1{font-size:clamp(42px,12.7vw,54px)}
+  body.home-view .hero-rail .rail-card,body.home-view .hero-rail .rail-card:first-child{flex-basis:80vw!important}
+  .navbar .logo,body.home-view .logo,body.detail-view .logo{width:112px}
+  .navbar .cart-toggle{min-width:62px;padding:7px}
+}
+
+/* Two-line location title over the upper hero video. */
+.hero-location{position:absolute;z-index:3;top:clamp(150px,19vh,205px);right:clamp(28px,4vw,68px);display:flex;flex-direction:column;align-items:flex-end;color:#F6E9DA;text-align:right;font:500 clamp(35px,3.6vw,64px)/.84 "Playfair Display",serif;letter-spacing:-.055em;text-transform:uppercase;text-shadow:0 4px 24px rgba(0,0,0,.55);pointer-events:none}
+.hero-location span{display:block;white-space:nowrap}
+body.detail-view .hero-location{display:none}
+@media(min-width:761px) and (max-width:1100px){.hero-location{top:118px;right:28px;font-size:clamp(31px,4.5vw,48px)}}
+@media(max-width:760px){.hero-location{top:86px;right:17px;left:17px;align-items:flex-end;font-size:clamp(28px,9.2vw,40px);line-height:.86}}
+@media(max-width:380px){.hero-location{font-size:27px}}
