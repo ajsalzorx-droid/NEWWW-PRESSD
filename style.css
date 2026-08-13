@@ -864,11 +864,3 @@ body.detail-view .menu-section .category-wrap:after{display:none}
   .navbar .logo,body.home-view .logo,body.detail-view .logo{width:112px}
   .navbar .cart-toggle{min-width:62px;padding:7px}
 }
-
-/* Two-line location title over the upper hero video. */
-.hero-location{position:absolute;z-index:3;top:clamp(150px,19vh,205px);right:clamp(28px,4vw,68px);display:flex;flex-direction:column;align-items:flex-end;color:#F6E9DA;text-align:right;font:500 clamp(35px,3.6vw,64px)/.84 "Playfair Display",serif;letter-spacing:-.055em;text-transform:uppercase;text-shadow:0 4px 24px rgba(0,0,0,.55);pointer-events:none}
-.hero-location span{display:block;white-space:nowrap}
-body.detail-view .hero-location{display:none}
-@media(min-width:761px) and (max-width:1100px){.hero-location{top:118px;right:28px;font-size:clamp(31px,4.5vw,48px)}}
-@media(max-width:760px){.hero-location{top:86px;right:17px;left:17px;align-items:flex-end;font-size:clamp(28px,9.2vw,40px);line-height:.86}}
-@media(max-width:380px){.hero-location{font-size:27px}}
