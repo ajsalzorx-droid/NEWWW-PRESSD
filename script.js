@@ -14,6 +14,16 @@ const menu = [
 
 const categories=document.querySelector('.categories');
 categories.innerHTML='<button class="active" data-filter="all">All</button>'+menu.map(c=>`<button data-filter="${c.slug}">${c.category}</button>`).join('');
+const categoryWrap=categories.closest('.category-wrap');
+const categoryPrev=document.createElement('button'),categoryNext=document.createElement('button');
+categoryPrev.className='category-arrow category-prev';categoryNext.className='category-arrow category-next';
+categoryPrev.type=categoryNext.type='button';categoryPrev.setAttribute('aria-label','Show previous menu categories');categoryNext.setAttribute('aria-label','Show more menu categories');
+categoryPrev.innerHTML='<span aria-hidden="true">←</span>';categoryNext.innerHTML='<span aria-hidden="true">→</span>';
+categoryWrap.prepend(categoryPrev);categoryWrap.append(categoryNext);
+const updateCategoryArrows=()=>{const max=categories.scrollWidth-categories.clientWidth;categoryPrev.disabled=categories.scrollLeft<3;categoryNext.disabled=categories.scrollLeft>max-3;categoryWrap.classList.toggle('can-scroll',max>3)};
+const moveCategories=direction=>categories.scrollBy({left:direction*Math.max(180,categories.clientWidth*.68),behavior:'smooth'});
+categoryPrev.addEventListener('click',()=>moveCategories(-1));categoryNext.addEventListener('click',()=>moveCategories(1));
+categories.addEventListener('scroll',updateCategoryArrows,{passive:true});addEventListener('resize',updateCategoryArrows,{passive:true});requestAnimationFrame(updateCategoryArrows);
 const content=document.querySelector('.menu-content');
 content.innerHTML=menu.map((c,index)=>c.editorial?`<article class="menu-category editorial ${index%2?'flip':''}" id="${c.slug}" data-category="${c.slug}"><div class="editorial-image"><img src="${c.items[0][3]}" alt="${c.category}" loading="lazy"></div><div class="editorial-list"><header><p>${String(index+1).padStart(2,'0')} · MENU</p><h3>${c.category}</h3><span>${c.tagline}</span></header>${c.items.map((x,i)=>`<div class="line-item"><b>${String(i+1).padStart(2,'0')}</b><div><h4>${x[0]} ${x[4]?`<i>${x[4]}</i>`:''}</h4><p>${x[1]}</p></div><div class="line-actions"><strong>AED ${x[2]}</strong><button class="add-cart" data-name="${x[0]}" data-price="${x[2]}">Add +</button></div></div>`).join('')}</div></article>`:`<article class="menu-category" id="${c.slug}" data-category="${c.slug}"><header class="category-title"><div><p>${String(index+1).padStart(2,'0')} · MENU</p><h3>${c.category}</h3></div><span>${c.tagline}</span></header><div class="menu-grid">${c.items.map(x=>`<div class="menu-card"><div class="menu-img"><img src="${x[3]}" alt="${x[0]}" loading="lazy">${x[4]?`<span>${x[4]}</span>`:''}</div><div class="menu-card-info"><div><h4>${x[0]}</h4><p>${x[1]}</p></div><div class="menu-card-actions"><strong>AED ${x[2]}</strong><button class="add-cart" data-name="${x[0]}" data-price="${x[2]}">Add +</button></div></div></div>`).join('')}</div></article>`).join('');
 
@@ -24,7 +34,7 @@ mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle.cl
 
 categories.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;categories.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');if(b.dataset.filter==='all')document.querySelector('#hot-beverages').scrollIntoView({behavior:'smooth',block:'start'});else document.getElementById(b.dataset.filter).scrollIntoView({behavior:'smooth',block:'start'});});
 const menuSections=[...document.querySelectorAll('.menu-category')];
-const menuObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){categories.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.filter===e.target.dataset.category));}}),{rootMargin:'-30% 0px -55%',threshold:0});
+const menuObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){categories.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.filter===e.target.dataset.category));const active=categories.querySelector('.active');active?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});setTimeout(updateCategoryArrows,350);}}),{rootMargin:'-30% 0px -55%',threshold:0});
 menuSections.forEach(x=>menuObserver.observe(x));
 
 const revealObserver=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target)}}),{threshold:.13});
