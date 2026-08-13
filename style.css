@@ -782,6 +782,14 @@ body.detail-view .menu-section .category-wrap:after{display:none}
 .footer-logo{width:min(62vw,680px);height:auto;object-fit:contain;object-position:left center}
 .loader{background:#000}
 .loader-line{background:var(--orange);box-shadow:0 0 18px rgba(251,176,25,.55)}
+
+/* Navigation stroke specification: HEX #F6E9DA / RGB 246, 233, 218. */
+.navbar,.navbar.scrolled,body.detail-view .navbar{border-color:#F6E9DA!important}
+.navbar .cart-toggle,.navbar>.book-btn{border-color:#F6E9DA!important}
+@media(max-width:760px){
+  .navbar,.navbar.scrolled,body.home-view .navbar,body.home-view .navbar.scrolled,body.detail-view .navbar{border-color:#F6E9DA!important}
+  .navbar .cart-toggle,.navbar .menu-toggle{border-color:#F6E9DA!important}
+}
 @media(max-width:900px){
   .logo{width:145px;height:48px;margin-left:0}
   .logo img{max-height:48px}
